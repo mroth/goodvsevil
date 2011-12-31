@@ -18,7 +18,9 @@ updateTweetUI = (selector, tweets) ->
 	for tweet in tweets
 		do (tweet) ->
 			# console.log(tweet.id)
-			$(selector).append("<li><strong>@#{tweet.username}:</strong> #{tweet.text}</li>")
+			tweet_url = "http://twitter.com/#{tweet.username}/status/#{tweet.id}"
+			$(selector).append("<li><strong>@#{tweet.username}:</strong> #{tweet.text}
+			<a href='#{tweet_url}'>\#</a></li>")
 	$(selector).fadeIn('fast')
 
 updateCountUI = (selector, count) ->
