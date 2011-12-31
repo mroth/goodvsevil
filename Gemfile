@@ -1,15 +1,23 @@
 source 'http://rubygems.org'
 
+#for web
 gem 'rails', '3.1.3'
 gem 'redis'
 gem 'thin'
 gem 'json'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+#additional for CLI
+gem 'tweetstream'
+gem 'yajl-ruby'
+gem 'twitter'
+gem 'colored'
 
-gem 'sqlite3'
-
+group :development do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
