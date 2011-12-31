@@ -57,7 +57,7 @@ end
 @client.track(TERMS) do |status|
   puts " ** @#{status.user.screen_name}: ".green + status.text.white if VERBOSE
   status_small = {
-    :id => status.id,
+    :id => status.id.to_s,
     :text => status.text,
     :username => status.user.screen_name
   }
