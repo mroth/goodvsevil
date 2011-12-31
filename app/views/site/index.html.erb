@@ -7,12 +7,14 @@
 		
 		<div class="row">
 			<div id="cat_count" class="countbox span8">
-				<h2>cat count</h2>
+				<h2>kitty count</h2>
 				<span id="count"><%= @cat_count -%></span>
+				<span id="diff"></span>
 			</div>
 			<div id="dog_count" class="countbox span8">
-				<h2>dog count</h2>
+				<h2>doggie count</h2>
 				<span id="count"><%= @dog_count -%></span>
+				<span id="diff"></span>
 			</div>
 		</div>
 	</section>
@@ -21,20 +23,20 @@
 	<br/><br/>
 	
 	<section id="tweets">
-		<div class="page-header">
+		<!-- <div class="page-header">
 			<h1>Tweets
 				<small>Most recent tweets about kitties or puppies</small>
 			</h1>
-		</div>
+		</div> -->
 		
 		<div class="row">
 			<div id="cat_tweets" class="span8">
-				<h2>cat tweets</h2>
-				<span id="count"><%= @cat_count -%></span>
+				<h2>recent cat tweets</h2>
+				<ul id="tweets"></ul>
 			</div>
 			<div id="dog_tweets" class="span8">
-				<h2>dog tweets</h2>
-				<span id="count"><%= @dog_count -%></span>
+				<h2>recent dog tweets</h2>
+				<ul id="tweets"></ul>
 			</div>
 		</div>
 	</section>
