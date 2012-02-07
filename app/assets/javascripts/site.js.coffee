@@ -9,7 +9,7 @@ updateValues = ->
 		updateTweetUI('#cat_tweets', response.cat_tweets)
 		updateTweetUI('#dog_tweets', response.dog_tweets)
 	, "json")
-	setTimeout(updateValues, 8000)
+	setTimeout(updateValues, 3000)
 
 updateTweetUI = (selector, tweets) ->
 	selector = selector + ' #tweets'
