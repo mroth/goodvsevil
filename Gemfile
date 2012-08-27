@@ -17,6 +17,7 @@ group :development do
 end
 group :production do
   gem 'pg'
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required
