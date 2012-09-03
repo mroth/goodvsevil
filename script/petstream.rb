@@ -66,6 +66,7 @@ end
     puts "   ...doggie!" if VERBOSE
     
     REDIS.INCR 'dog_count'
+    REDIS.PUBLISH 'stream.tweets.dog', status_small.to_json
     REDIS.LPUSH 'dog_tweets', status_small.to_json
     REDIS.LTRIM 'dog_tweets',0,9
   end
@@ -73,6 +74,7 @@ end
     puts "   ...kitty!" if VERBOSE
     
     REDIS.INCR 'cat_count'
+    REDIS.PUBLISH 'stream.tweets.cat', status_small.to_json
     REDIS.LPUSH 'cat_tweets', status_small.to_json
     REDIS.LTRIM 'cat_tweets',0,9
   end
