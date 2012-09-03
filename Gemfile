@@ -7,9 +7,8 @@ gem 'thin'
 gem 'json'
 
 #additional for CLI
-gem 'tweetstream'
-gem 'yajl-ruby'
-gem 'twitter'
+gem 'tweetstream', "~> 2.1.0"
+gem 'oj'
 gem 'colored'
 
 group :development do
