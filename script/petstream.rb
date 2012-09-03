@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'tweetstream'
 require 'oj'
-# require 'twitter'
 require 'colored'
 require 'redis'
 require 'uri'
@@ -23,21 +22,12 @@ TweetStream.configure do |config|
   config.parser   = :yajl
 end
 
-# configure twitter gem instance
-# Twitter.configure do |config|
-#   config.consumer_key = CONSUMER_KEY
-#   config.consumer_secret = CONSUMER_SECRET
-#   config.oauth_token = OAUTH_TOKEN
-#   config.oauth_token_secret = OAUTH_TOKEN_SECRET
-# end
-
 # db setup
 uri = URI.parse(ENV["REDISTOGO_URL"])
 REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
 # my options
 VERBOSE = ENV["VERBOSE"] || false
-
 
 #setup
 DOGTERMS = %w[dog dogs doggy doggie doggies puppy puppies]
@@ -64,7 +54,6 @@ end
   
   if status.text =~ /#{DOGTERMS.join('|')}/i
     puts "   ...doggie!" if VERBOSE
-    
     REDIS.INCR 'dog_count'
     REDIS.PUBLISH 'stream.tweets.dog', status_small.to_json
     REDIS.LPUSH 'dog_tweets', status_small.to_json
@@ -72,7 +61,6 @@ end
   end
   if status.text =~ /#{CATTERMS.join('|')}/i
     puts "   ...kitty!" if VERBOSE
-    
     REDIS.INCR 'cat_count'
     REDIS.PUBLISH 'stream.tweets.cat', status_small.to_json
     REDIS.LPUSH 'cat_tweets', status_small.to_json
