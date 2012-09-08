@@ -19,7 +19,7 @@ And then run the needed processes via `foreman start`.
 
 ### Tweetstream process
 
-Managed via `petstream.rb`, it subscribes to the Twitter streaming API, and then tracks a count of matching terms in Redis, and keeps a FIFO list of the most recent matching tweets in a constantly truncated redis list.  It also now squirts each matching tweet out over redis `PUBLISH` so that clients can stream from it in realtime.
+Managed via `tweetstream.rb`, it subscribes to the Twitter streaming API, and then tracks a count of matching terms in Redis, and keeps a FIFO list of the most recent matching tweets in a constantly truncated redis list.  It also now squirts each matching tweet out over redis `PUBLISH` so that clients can stream from it in realtime.
 
 ### Web process
 Can you guess where this is? I bet you can. (hint: `web.rb`)
