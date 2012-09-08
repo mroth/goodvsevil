@@ -38,7 +38,6 @@ GEM
     heroku-api (0.3.4)
       excon (~> 0.16.1)
     http_parser.rb (0.5.3)
-    json (1.7.5)
     launchy (2.1.2)
       addressable (~> 2.3)
     mime-types (1.19)
@@ -89,7 +88,6 @@ DEPENDENCIES
   colored
   foreman
   heroku
-  json
   newrelic_rpm
   oj
   redis

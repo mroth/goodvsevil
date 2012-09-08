@@ -2,11 +2,12 @@ require 'sinatra'
 require 'redis'
 require 'slim'
 require 'coffee-script'
-require 'json'
+require 'oj'
 
 configure do
   uri = URI.parse(ENV["REDISTOGO_URL"])
   REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+  Oj.mimic_JSON
 end
 configure :production do
   require 'newrelic_rpm'
@@ -31,12 +32,12 @@ get '/data' do
   @dog_count = @count[1].to_i
 
   content_type :json
-  { 
-    :cat_count  => @cat_count, 
-    :dog_count  => @dog_count,
-    :cat_tweets => @cat_tweets,
-    :dog_tweets => @dog_tweets
-  }.to_json
+  Oj.dump( {
+    'cat_count'  => @cat_count,
+    'dog_count'  => @dog_count,
+    'cat_tweets' => @cat_tweets,
+    'dog_tweets' => @dog_tweets
+  } )
 end
 
 get '/subscribe' do
