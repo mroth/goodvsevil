@@ -5,18 +5,12 @@ require 'colored'
 require 'redis'
 require 'uri'
 
-# secret tokens
-CONSUMER_KEY = ENV['CONSUMER_KEY']
-CONSUMER_SECRET = ENV['CONSUMER_SECRET']
-OAUTH_TOKEN = ENV['OAUTH_TOKEN']
-OAUTH_TOKEN_SECRET = ENV['OAUTH_TOKEN_SECRET']
-
 # configure tweetstream instance
 TweetStream.configure do |config|
-  config.consumer_key = CONSUMER_KEY
-  config.consumer_secret = CONSUMER_SECRET
-  config.oauth_token = OAUTH_TOKEN
-  config.oauth_token_secret = OAUTH_TOKEN_SECRET
+  config.consumer_key       = ENV['CONSUMER_KEY']
+  config.consumer_secret    = ENV['CONSUMER_SECRET']
+  config.oauth_token        = ENV['OAUTH_TOKEN']
+  config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
   config.auth_method = :oauth
 end
 
