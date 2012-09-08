@@ -6,12 +6,12 @@ Later on I decided to play with Server-Side Events as a more compatible subset o
 
 The app uses heroku-style configuration via environment variables, so the easiest way to do local development is to make sure you have an `.env` file with the needed variables:
 
-  CONSUMER_KEY=aaa
-  CONSUMER_SECRET=bbb
-  OAUTH_TOKEN=ccc
-  OAUTH_TOKEN_SECRET=ddd
-  REDISTOGO_URL=redis:/url.here/
-  VERBOSE=true
+    CONSUMER_KEY=aaa
+    CONSUMER_SECRET=bbb
+    OAUTH_TOKEN=ccc
+    OAUTH_TOKEN_SECRET=ddd
+    REDISTOGO_URL=redis:/url.here/
+    VERBOSE=true
 
 And then run the needed processes via `foreman start`.
 
