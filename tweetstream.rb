@@ -19,7 +19,7 @@ TweetStream.configure do |config|
   config.oauth_token = OAUTH_TOKEN
   config.oauth_token_secret = OAUTH_TOKEN_SECRET
   config.auth_method = :oauth
-  config.parser   = :yajl
+  config.parser   = :oj
 end
 
 # db setup
