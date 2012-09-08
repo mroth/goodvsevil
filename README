@@ -1,3 +1,0 @@
-A quick hack to compare keyword counts in the twitter streaming API. I use cats and dogs.
-
-Nothing really of note to see here, most anything "interesting" is in `script/petstream.rb`.
