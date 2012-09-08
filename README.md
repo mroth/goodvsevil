@@ -1,4 +1,4 @@
-A quick hack to compare keyword counts in the twitter streaming API. I use cats and dogs.
+A quick hack to compare keyword counts in the twitter streaming API. I used cats and dogs in a stunning lack of creativity.
 
 Later on I decided to play with Server-Side Events as a more compatible subset of WebSockets for realtime streaming.  So I suppose this project could serve as a template for someone who wants to see either how to subscribe to and monitor via the Twitter streaming API with redis backing, and/or how to monitor that in realtime via a web UI using SSE or polling.
 
