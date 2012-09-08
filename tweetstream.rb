@@ -4,7 +4,7 @@ require 'oj'
 require 'colored'
 require 'redis'
 require 'uri'
-require 'json'
+# require 'json'
 
 # secret tokens
 CONSUMER_KEY = ENV['CONSUMER_KEY']
@@ -19,7 +19,7 @@ TweetStream.configure do |config|
   config.oauth_token = OAUTH_TOKEN
   config.oauth_token_secret = OAUTH_TOKEN_SECRET
   config.auth_method = :oauth
-  config.parser   = :oj
+  # config.parser   = :oj
 end
 
 # db setup
@@ -51,19 +51,20 @@ end
     :text => status.text,
     :username => status.user.screen_name
   }
+  status_json = Oj.dump(status_small)
   
   if status.text =~ /#{DOGTERMS.join('|')}/i
     puts "   ...doggie!" if VERBOSE
     REDIS.INCR 'dog_count'
-    REDIS.PUBLISH 'stream.tweets.dog', status_small.to_json
-    REDIS.LPUSH 'dog_tweets', status_small.to_json
+    REDIS.PUBLISH 'stream.tweets.dog', status_json #status_small.to_json
+    REDIS.LPUSH 'dog_tweets', status_json #status_small.to_json
     REDIS.LTRIM 'dog_tweets',0,9
   end
   if status.text =~ /#{CATTERMS.join('|')}/i
     puts "   ...kitty!" if VERBOSE
     REDIS.INCR 'cat_count'
-    REDIS.PUBLISH 'stream.tweets.cat', status_small.to_json
-    REDIS.LPUSH 'cat_tweets', status_small.to_json
+    REDIS.PUBLISH 'stream.tweets.cat', status_json #status_small.to_json
+    REDIS.LPUSH 'cat_tweets', status_json #status_small.to_json
     REDIS.LTRIM 'cat_tweets',0,9
   end
 end
