@@ -7,7 +7,7 @@ require 'oj'
 configure do
   uri = URI.parse(ENV["REDISTOGO_URL"])
   REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
-  Oj.mimic_JSON
+  # Oj.mimic_JSON
 end
 configure :production do
   require 'newrelic_rpm'
@@ -26,8 +26,8 @@ get '/data' do
   @count = REDIS.mget 'cat_count', 'dog_count'
   @dog_tweets = REDIS.lrange 'dog_tweets',0,9
   @cat_tweets = REDIS.lrange 'cat_tweets',0,9
-  @dog_tweets.map! {|t| JSON.parse(t)}
-  @cat_tweets.map! {|t| JSON.parse(t)}
+  @dog_tweets.map! {|t| Oj.load(t)}
+  @cat_tweets.map! {|t| Oj.load(t)}
   @cat_count = @count[0].to_i
   @dog_count = @count[1].to_i
 

@@ -10,7 +10,7 @@ group :web do
   gem 'sinatra'
   gem 'slim'
   gem 'coffee-script'
-  gem 'sass'
+  gem 'sass', :require => 'sass'
   gem 'thin'
 end
 
