@@ -1,9 +1,5 @@
-source :rubygems
-
-group :development do
-  gem 'heroku'
-  gem 'foreman'
-end
+source 'https://rubygems.org'
+ruby '2.0.0'
 
 group :web, :streamer do
   gem 'redis'
@@ -19,7 +15,7 @@ group :web do
 end
 
 group :streamer do
-  gem 'tweetstream', "~> 2.1.0"
+  gem 'tweetstream', "~> 2.5.0"
   gem 'colored'
 end
 
